@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Level Cache System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Recent Operations Panel -->
+        <aside class="operations-panel">
+            <div class="panel-header">
+                <h3>Recent Operations</h3>
+                <button id="clearOpsBtn" class="clear-ops-btn">Clear</button>
+            </div>
+            <div id="operationsList" class="operations-list"></div>
+        </aside>
+
+        <div class="container">
+            <!-- Header -->
+            <header class="header">
+                <h1>Multi-Level Cache System</h1>
+                <p class="subtitle">Efficient hierarchical caching with LRU & LFU</p>
+            </header>
+
+        <!-- Control Panel -->
+        <section class="control-panel">
+            <div class="input-group">
+                <input 
+                    type="number" 
+                    id="keyInput" 
+                    placeholder="Enter Key" 
+                    class="input-field"
+                    min="0"
+                >
+                <input 
+                    type="number" 
+                    id="valueInput" 
+                    placeholder="Enter Value" 
+                    class="input-field"
+                    min="0"
+                >
+            </div>
+            <div class="button-group">
+                <button id="putBtn" class="btn btn-primary">PUT</button>
+                <button id="getBtn" class="btn btn-secondary">GET</button>
+                <button id="clearBtn" class="btn btn-danger">CLEAR ALL</button>
+            </div>
+            <div id="statusMessage" class="status-message"></div>
+        </section>
+
+        <!-- Cache Display Section -->
+        <section class="cache-container">
+            <!-- L1 Cache (LRU) -->
+            <div class="cache-section l1-cache">
+                <div class="cache-header">
+                    <h2>L1 Cache (LRU)</h2>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="l1Progress" style="width: 0%"></div>
+                    <span class="progress-text" id="l1Info">0/3</span>
+                </div>
+                <div id="l1Items" class="cache-items"></div>
+                <div class="cache-footer">
+                    <p>Strategy: Least Recently Used</p>
+                </div>
+            </div>
+
+            <!-- L2 Cache (LFU) -->
+            <div class="cache-section l2-cache">
+                <div class="cache-header">
+                    <h2>L2 Cache (LFU)</h2>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="l2Progress" style="width: 0%"></div>
+                    <span class="progress-text" id="l2Info">0/5</span>
+                </div>
+                <div id="l2Items" class="cache-items"></div>
+                <div class="cache-footer">
+                    <p>Strategy: Least Frequently Used</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <h3>Operations</h3>
+                <p id="operationCount" class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Cache Hits</h3>
+                <p id="hitCount" class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Cache Misses</h3>
+                <p id="missCount" class="stat-value">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Hit Rate</h3>
+                <p id="hitRate" class="stat-value">0%</p>
+            </div>
+        </section>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
